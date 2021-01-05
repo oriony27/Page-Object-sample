@@ -6,7 +6,6 @@ import org.openqa.selenium.WebDriver;
 public abstract class BasePage {
     protected WebDriver driver;
 
-    public abstract HomePage open();
+    public abstract BasePage open();
     public abstract void isPageOpen() throws ValidationExceptions.WrongPageOpenedException;
-
 }

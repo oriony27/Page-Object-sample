@@ -1,7 +1,8 @@
 package com.formy.sample.enumeration;
 
 public enum  SupportedDrivers {
-    CHROME("chrome");
+    CHROME("chrome"),
+    FIREFOX("firefox");
 
     private String driverName;
 

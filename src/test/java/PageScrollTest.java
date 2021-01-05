@@ -1,9 +1,6 @@
 import com.formy.sample.config.WebDriverConfiguration;
-import com.formy.sample.enumeration.Components;
 import com.formy.sample.enumeration.SupportedDrivers;
-import com.formy.sample.exceptions.ValidationExceptions;
-import com.formy.sample.pages.ButtonsPage;
-import com.formy.sample.pages.MainPage;
+import com.formy.sample.pages.PageScrollPage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,7 +9,7 @@ import org.junit.runners.JUnit4;
 import org.openqa.selenium.WebDriver;
 
 @RunWith(JUnit4.class)
-public class HomePageTest {
+public class PageScrollTest {
     private WebDriver driver;
 
     @Before
@@ -21,14 +18,11 @@ public class HomePageTest {
     }
 
     @Test
-    public void isPossibleToNavigateByLinks() throws ValidationExceptions.WrongPageOpenedException {
-        MainPage mainPage = new MainPage();
-        mainPage
+    public void isPossibleToScrollToElement() {
+        PageScrollPage pageScrollPage = new PageScrollPage();
+        pageScrollPage
                 .open()
-                .goToPage(Components.BUTTONS_LINK.getLinkName());
-
-        ButtonsPage buttonsPage = new ButtonsPage();
-        buttonsPage.isPageOpen();
+                .scrollToFullNameInput();
     }
 
     @After

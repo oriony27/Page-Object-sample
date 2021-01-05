@@ -3,10 +3,14 @@ package com.formy.sample.pages;
 import com.codeborne.selenide.SelenideElement;
 import com.formy.sample.config.WebDriverConfiguration;
 import com.formy.sample.exceptions.ValidationExceptions;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
 
 public class ButtonsPage extends HomePage {
@@ -18,16 +22,16 @@ public class ButtonsPage extends HomePage {
     }
 
     @FindBy(css = "form .col-sm-8 > .btn-primary")
-    private SelenideElement primaryButton;
+    private WebElement primaryButton;
 
     @FindBy(css = ".btn-link")
-    private SelenideElement link;
+    private WebElement link;
 
     @FindBy(css = "button.dropdown-toggle")
-    private SelenideElement dropdown;
+    private WebElement dropdown;
 
-    @FindBy(className = ".dropdown-menu.show")
-    private List<SelenideElement> dropdownData;
+    @FindBy(css = "div[aria-labelledby='btnGroupDrop1'] > a")
+    private List<WebElement> dropdownData;
 
     @Override
     public ButtonsPage open() {
@@ -42,20 +46,31 @@ public class ButtonsPage extends HomePage {
         }
     }
 
-    public void clickPrimaryButton() {
+    public ButtonsPage clickPrimaryButton() {
         primaryButton.click();
+        return this;
     }
 
-    public void clickDropdownAndSelectOption(String option) {
-        dropdown.click();
-        PageFactory.initElements(driver, this);
-        dropdownData.stream().filter(item -> item.getText().contains(option)).findFirst().ifPresent(SelenideElement::click);
+    public ButtonsPage clickLink() {
+        link.click();
+        return this;
     }
 
-    public void isDropdownContainsAllValues(List<String> values) {
+    public ButtonsPage clickDropdownAndSelectOption(String option) {
         dropdown.click();
-        PageFactory.initElements(driver, this);
-        //TODO add validation and exception throw
-        values.containsAll(dropdownData.stream().map(SelenideElement::getText).collect(Collectors.toList()));
+        driver.manage().timeouts().implicitlyWait(200, TimeUnit.MILLISECONDS);
+        dropdownData.stream().filter(item -> item.getText().contains(option)).findFirst().ifPresent(WebElement::click);
+        return this;
+    }
+
+    public ButtonsPage isDropdownContainsAllValues(List<String> values) throws ValidationExceptions.WrongElementStateException {
+        dropdown.click();
+        driver.manage().timeouts().implicitlyWait(200, TimeUnit.MILLISECONDS);
+        List<String> dropdownValues = dropdownData.stream().map(WebElement::getText).collect(Collectors.toList());
+
+        if (!values.containsAll(dropdownValues)) {
+            throw new ValidationExceptions.WrongElementStateException("Dropdown contains not all expected elements!");
+        }
+        return this;
     }
 }

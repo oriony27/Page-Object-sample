@@ -1,9 +1,8 @@
 import com.formy.sample.config.WebDriverConfiguration;
-import com.formy.sample.enumeration.Components;
 import com.formy.sample.enumeration.SupportedDrivers;
 import com.formy.sample.exceptions.ValidationExceptions;
-import com.formy.sample.pages.ButtonsPage;
 import com.formy.sample.pages.MainPage;
+import com.formy.sample.pages.SwitchWindowPage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,7 +11,7 @@ import org.junit.runners.JUnit4;
 import org.openqa.selenium.WebDriver;
 
 @RunWith(JUnit4.class)
-public class HomePageTest {
+public class SwitchWindowTest {
     private WebDriver driver;
 
     @Before
@@ -21,14 +20,20 @@ public class HomePageTest {
     }
 
     @Test
-    public void isPossibleToNavigateByLinks() throws ValidationExceptions.WrongPageOpenedException {
-        MainPage mainPage = new MainPage();
-        mainPage
+    public void isPossibleToSwitchWindow() throws ValidationExceptions.WrongElementStateException {
+        SwitchWindowPage switchWindowPage = new SwitchWindowPage();
+        switchWindowPage
                 .open()
-                .goToPage(Components.BUTTONS_LINK.getLinkName());
+                .clickOpenNewTabButtonAndSwitchToIt()
+                .checkSwitchedTab(MainPage.URL);
+    }
 
-        ButtonsPage buttonsPage = new ButtonsPage();
-        buttonsPage.isPageOpen();
+    @Test
+    public void isPossibleToSwitchOnAlert() {
+        SwitchWindowPage switchWindowPage = new SwitchWindowPage();
+        switchWindowPage
+                .open()
+                .clickAlertButtonAndSwitchToIt();
     }
 
     @After
