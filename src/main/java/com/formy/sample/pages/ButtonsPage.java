@@ -1,13 +1,10 @@
 package com.formy.sample.pages;
 
-import com.codeborne.selenide.SelenideElement;
 import com.formy.sample.config.WebDriverConfiguration;
 import com.formy.sample.exceptions.ValidationExceptions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
