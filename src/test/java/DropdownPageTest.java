@@ -1,8 +1,9 @@
 import com.formy.sample.config.WebDriverConfiguration;
+import com.formy.sample.enumeration.Components;
 import com.formy.sample.enumeration.SupportedDrivers;
 import com.formy.sample.exceptions.ValidationExceptions;
-import com.formy.sample.pages.MainPage;
-import com.formy.sample.pages.SwitchWindowPage;
+import com.formy.sample.pages.ButtonsPage;
+import com.formy.sample.pages.DropdownPage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,7 +12,7 @@ import org.junit.runners.JUnit4;
 import org.openqa.selenium.WebDriver;
 
 @RunWith(JUnit4.class)
-public class SwitchWindowTest {
+public class DropdownPageTest {
     private WebDriver driver;
 
     @Before
@@ -20,20 +21,14 @@ public class SwitchWindowTest {
     }
 
     @Test
-    public void isPossibleToSwitchWindow() throws ValidationExceptions.WrongElementStateException {
-        SwitchWindowPage switchWindowPage = new SwitchWindowPage();
-        switchWindowPage
+    public void isDropdownWorking() throws ValidationExceptions.WrongPageOpenedException {
+        DropdownPage dropdownPage = new DropdownPage();
+        dropdownPage
                 .open()
-                .clickOpenNewTabButtonAndSwitchToIt()
-                .checkSwitchedTab(new MainPage().getUrl());
-    }
+                .clickAndSelectButtonsFromDropdown();
 
-    @Test
-    public void isPossibleToSwitchOnAlert() {
-        SwitchWindowPage switchWindowPage = new SwitchWindowPage();
-        switchWindowPage
-                .open()
-                .clickAlertButtonAndSwitchToIt();
+        ButtonsPage buttonsPage = new ButtonsPage();
+        buttonsPage.isPageOpen();
     }
 
     @After

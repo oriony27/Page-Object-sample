@@ -1,22 +1,16 @@
 package com.formy.sample.pages;
 
-import com.formy.sample.config.WebDriverConfiguration;
 import com.formy.sample.exceptions.ValidationExceptions;
+import com.formy.sample.utils.WaitUtils;
 import org.openqa.selenium.Alert;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-import java.util.concurrent.TimeUnit;
-
-public class SwitchWindowPage extends BasePage {
-    private static final String URL = "https://formy-project.herokuapp.com/switch-window";
-    private WebDriver driver;
+public class SwitchWindowPage extends HomePage {
 
     public SwitchWindowPage() {
-        driver = WebDriverConfiguration.getWebDriver();
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(getWebDriver(), this);
     }
 
     @FindBy(id = "new-tab-button")
@@ -27,25 +21,25 @@ public class SwitchWindowPage extends BasePage {
 
     @Override
     public SwitchWindowPage open() {
-        driver.get(URL);
+        super.open();
         return this;
     }
 
     @Override
-    public void isPageOpen() throws ValidationExceptions.WrongPageOpenedException {
-
+    public String getUrl() {
+        return "https://formy-project.herokuapp.com/switch-window";
     }
 
     public SwitchWindowPage clickOpenNewTabButtonAndSwitchToIt() {
-        driver.manage().timeouts().pageLoadTimeout(2, TimeUnit.SECONDS);
+        WaitUtils.waitForPageLoad(getWebDriver());
         openNewTabButton.click();
-        driver.getWindowHandles().forEach(h -> driver.switchTo().window(h));
+        getWebDriver().getWindowHandles().forEach(h -> getWebDriver().switchTo().window(h));
         return this;
     }
 
     public SwitchWindowPage checkSwitchedTab(String expectedUrl) throws ValidationExceptions.WrongElementStateException {
-        driver.manage().timeouts().pageLoadTimeout(1, TimeUnit.SECONDS);
-        String currentUrl = driver.getCurrentUrl();
+        WaitUtils.waitForPageLoad(getWebDriver());
+        String currentUrl = getWebDriver().getCurrentUrl();
 
         if (!expectedUrl.equals(currentUrl)) {
             throw new ValidationExceptions.WrongElementStateException("Wrong tab switch!");
@@ -56,7 +50,7 @@ public class SwitchWindowPage extends BasePage {
 
     public SwitchWindowPage clickAlertButtonAndSwitchToIt() {
         alertButton.click();
-        Alert alert = driver.switchTo().alert();
+        Alert alert = getWebDriver().switchTo().alert();
         alert.accept();
         return this;
     }

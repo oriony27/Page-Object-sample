@@ -1,20 +1,15 @@
 package com.formy.sample.pages;
 
-import com.formy.sample.config.WebDriverConfiguration;
 import com.formy.sample.exceptions.ValidationExceptions;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 public class DatepickerPage extends HomePage {
-    private static final String URL = "https://formy-project.herokuapp.com/datepicker";
-    private WebDriver driver;
 
     public DatepickerPage() {
-        driver = WebDriverConfiguration.getWebDriver();
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(getWebDriver(), this);
     }
 
     @FindBy(id = "datepicker")
@@ -22,13 +17,13 @@ public class DatepickerPage extends HomePage {
 
     @Override
     public DatepickerPage open() {
-        driver.get(URL);
+        super.open();
         return this;
     }
 
     @Override
-    public void isPageOpen() throws ValidationExceptions.WrongPageOpenedException {
-
+    public String getUrl() {
+        return "https://formy-project.herokuapp.com/datepicker";
     }
 
     public DatepickerPage selectDateInDatepicker(String date) {

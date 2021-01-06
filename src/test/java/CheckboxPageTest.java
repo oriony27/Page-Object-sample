@@ -1,8 +1,7 @@
 import com.formy.sample.config.WebDriverConfiguration;
 import com.formy.sample.enumeration.SupportedDrivers;
 import com.formy.sample.exceptions.ValidationExceptions;
-import com.formy.sample.pages.MainPage;
-import com.formy.sample.pages.SwitchWindowPage;
+import com.formy.sample.pages.CheckboxPage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,7 +10,7 @@ import org.junit.runners.JUnit4;
 import org.openqa.selenium.WebDriver;
 
 @RunWith(JUnit4.class)
-public class SwitchWindowTest {
+public class CheckboxPageTest {
     private WebDriver driver;
 
     @Before
@@ -20,20 +19,11 @@ public class SwitchWindowTest {
     }
 
     @Test
-    public void isPossibleToSwitchWindow() throws ValidationExceptions.WrongElementStateException {
-        SwitchWindowPage switchWindowPage = new SwitchWindowPage();
-        switchWindowPage
+    public void isPossibleToSelectCheckbox() throws ValidationExceptions.WrongElementStateException {
+        CheckboxPage checkboxPage = new CheckboxPage();
+        checkboxPage
                 .open()
-                .clickOpenNewTabButtonAndSwitchToIt()
-                .checkSwitchedTab(new MainPage().getUrl());
-    }
-
-    @Test
-    public void isPossibleToSwitchOnAlert() {
-        SwitchWindowPage switchWindowPage = new SwitchWindowPage();
-        switchWindowPage
-                .open()
-                .clickAlertButtonAndSwitchToIt();
+                .selectCheckboxAndCheckThatItSelected();
     }
 
     @After

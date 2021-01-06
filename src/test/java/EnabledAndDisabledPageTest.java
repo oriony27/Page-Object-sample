@@ -1,8 +1,7 @@
 import com.formy.sample.config.WebDriverConfiguration;
 import com.formy.sample.enumeration.SupportedDrivers;
 import com.formy.sample.exceptions.ValidationExceptions;
-import com.formy.sample.pages.MainPage;
-import com.formy.sample.pages.SwitchWindowPage;
+import com.formy.sample.pages.EnabledAndDisabledPage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -11,7 +10,7 @@ import org.junit.runners.JUnit4;
 import org.openqa.selenium.WebDriver;
 
 @RunWith(JUnit4.class)
-public class SwitchWindowTest {
+public class EnabledAndDisabledPageTest {
     private WebDriver driver;
 
     @Before
@@ -20,20 +19,19 @@ public class SwitchWindowTest {
     }
 
     @Test
-    public void isPossibleToSwitchWindow() throws ValidationExceptions.WrongElementStateException {
-        SwitchWindowPage switchWindowPage = new SwitchWindowPage();
-        switchWindowPage
+    public void isElementDisabled() throws ValidationExceptions.WrongElementStateException {
+        EnabledAndDisabledPage enabledAndDisabledPage = new EnabledAndDisabledPage();
+        enabledAndDisabledPage
                 .open()
-                .clickOpenNewTabButtonAndSwitchToIt()
-                .checkSwitchedTab(new MainPage().getUrl());
+                .isInputDisabled();
     }
 
     @Test
-    public void isPossibleToSwitchOnAlert() {
-        SwitchWindowPage switchWindowPage = new SwitchWindowPage();
-        switchWindowPage
+    public void isElementEnabled() throws ValidationExceptions.WrongElementStateException {
+        EnabledAndDisabledPage enabledAndDisabledPage = new EnabledAndDisabledPage();
+        enabledAndDisabledPage
                 .open()
-                .clickAlertButtonAndSwitchToIt();
+                .isInputEnabled();
     }
 
     @After

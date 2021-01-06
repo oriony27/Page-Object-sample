@@ -1,21 +1,15 @@
 package com.formy.sample.pages;
 
-import com.formy.sample.config.WebDriverConfiguration;
 import com.formy.sample.exceptions.ValidationExceptions;
 import org.apache.commons.lang3.StringUtils;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class FileUploadPage extends BasePage {
-    private static final String URL = "https://formy-project.herokuapp.com/fileupload";
-    private WebDriver driver;
+public class FileUploadPage extends HomePage {
 
     public FileUploadPage() {
-        driver = WebDriverConfiguration.getWebDriver();
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(getWebDriver(), this);
     }
 
     @FindBy(id = "file-upload-field")
@@ -26,13 +20,13 @@ public class FileUploadPage extends BasePage {
 
     @Override
     public FileUploadPage open() {
-        driver.get(URL);
+        super.open();
         return this;
     }
 
     @Override
-    public void isPageOpen() throws ValidationExceptions.WrongPageOpenedException {
-
+    public String getUrl() {
+        return "https://formy-project.herokuapp.com/fileupload";
     }
 
     public FileUploadPage uploadFile(String pathToFile) {

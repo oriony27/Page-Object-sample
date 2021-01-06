@@ -1,17 +1,17 @@
 package com.formy.sample.pages;
 
-import com.formy.sample.config.WebDriverConfiguration;
 import com.formy.sample.enumeration.Components;
-import com.formy.sample.exceptions.ValidationExceptions;
+import org.apache.commons.lang3.NotImplementedException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.List;
+
 public class HomePage extends BasePage {
 
     public HomePage() {
-        driver = WebDriverConfiguration.getWebDriver();
-        PageFactory.initElements(driver, this);
+        PageFactory.initElements(getWebDriver(), this);
     }
 
     @FindBy(xpath = "//a[@id='logo']")
@@ -23,8 +23,19 @@ public class HomePage extends BasePage {
     @FindBy(css = "#navbarDropdownMenuLink")
     private WebElement components;
 
-    @FindBy(css = ".dropdown-menu.show")
-    private WebElement dropdownMenu;
+    @FindBy(css = ".dropdown-menu.show a")
+    private List<WebElement> dropdownMenu;
+
+    @Override
+    public HomePage open() {
+        super.open();
+        return this;
+    }
+
+    @Override
+    public String getUrl() {
+        throw new NotImplementedException();
+    }
 
     public void clickLogo() {
         logo.click();
@@ -34,18 +45,10 @@ public class HomePage extends BasePage {
         form.click();
     }
 
-    protected void navigateToComponent(Components components) {
+    protected void navigateToComponent(Components compName) {
+        String component = compName.getLinkName();
+        components.click();
 
-    }
-
-
-    @Override
-    public HomePage open() {
-        return null;
-    }
-
-    @Override
-    public void isPageOpen() throws ValidationExceptions.WrongPageOpenedException {
-
+        dropdownMenu.stream().filter(item -> item.equals(component)).findFirst().ifPresent(WebElement::click);
     }
 }
