@@ -1,7 +1,5 @@
 package com.formy.sample.pages;
 
-import com.formy.sample.exceptions.ValidationExceptions;
-import com.formy.sample.utils.WaitUtils;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -48,15 +46,6 @@ public class ModalPage extends HomePage {
     public ModalPage checkCloseModal() {
         JavascriptExecutor javascriptExecutor = (JavascriptExecutor)getWebDriver();
         javascriptExecutor.executeScript("arguments[0].click();", closeModalButton);
-        return this;
-    }
-
-    public ModalPage isModalClosed() throws ValidationExceptions.WrongElementStateException {
-        WaitUtils.implicitWait(getWebDriver());
-        if (!closeModalButton.isDisplayed()) {
-            throw new ValidationExceptions.WrongElementStateException("Modal displayed!");
-        }
-
         return this;
     }
 }

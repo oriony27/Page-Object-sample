@@ -1,25 +1,14 @@
-import com.formy.sample.config.WebDriverConfiguration;
-import com.formy.sample.enumeration.SupportedDrivers;
+package impl;
+
+import api.BaseTest;
 import com.formy.sample.exceptions.ValidationExceptions;
 import com.formy.sample.pages.ButtonsPage;
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.JUnit4;
-import org.openqa.selenium.WebDriver;
 
 import java.util.Arrays;
 import java.util.List;
 
-@RunWith(JUnit4.class)
-public class ButtonsPageTest {
-    private WebDriver driver;
-
-    @Before
-    public void initDriver() {
-        driver = WebDriverConfiguration.setWebDriver(SupportedDrivers.CHROME);
-    }
+public class ButtonsPageTest extends BaseTest {
 
     @Test
     public void isButtonClickable() {
@@ -52,11 +41,5 @@ public class ButtonsPageTest {
         buttonsPage
                 .open()
                 .isDropdownContainsAllValues(expectedValues);
-    }
-
-    @After
-    public void tearDown() {
-        WebDriverConfiguration.clearCookies();
-        WebDriverConfiguration.tearDown();
     }
 }
