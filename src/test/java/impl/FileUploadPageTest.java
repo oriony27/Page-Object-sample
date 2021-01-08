@@ -10,16 +10,16 @@ public class FileUploadPageTest extends BaseTest {
 
     @Test
     public void isPossibleToUploadFile() {
-        FileUploadPage fileUploadPage = new FileUploadPage();
-        fileUploadPage
+        storage
+                .getPage(FileUploadPage.class)
                 .open()
                 .uploadFile(PATH_TO_FILE);
     }
 
     @Test
     public void isPossibleToResetUpload() throws ValidationExceptions.WrongElementStateException {
-        FileUploadPage fileUploadPage = new FileUploadPage();
-        fileUploadPage
+        storage
+                .getPage(FileUploadPage.class)
                 .open()
                 .uploadFile(PATH_TO_FILE)
                 .resetUploadedFile();

@@ -8,8 +8,8 @@ public class AutocompletePageTest extends BaseTest {
 
     @Test
     public void isAutocompleteWorking() {
-        AutocompletePage autocompletePage = new AutocompletePage();
-        autocompletePage
+        storage
+                .getPage(AutocompletePage.class)
                 .open()
                 .autocomplete("Sumska Street, Kharkiv, Kharkiv Oblast, Ukraine");
     }

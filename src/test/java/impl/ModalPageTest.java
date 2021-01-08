@@ -8,8 +8,8 @@ public class ModalPageTest extends BaseTest {
 
     @Test
     public void isPossibleToCloseModal() {
-        ModalPage modalPage = new ModalPage();
-        modalPage
+        storage
+                .getPage(ModalPage.class)
                 .open()
                 .openModal()
                 .checkCloseModal();

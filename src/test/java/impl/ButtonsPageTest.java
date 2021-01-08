@@ -12,24 +12,24 @@ public class ButtonsPageTest extends BaseTest {
 
     @Test
     public void isButtonClickable() {
-        ButtonsPage buttonsPage = new ButtonsPage();
-        buttonsPage
+        storage
+                .getPage(ButtonsPage.class)
                 .open()
                 .clickPrimaryButton();
     }
 
     @Test
     public void isLinkClickable() {
-        ButtonsPage buttonsPage = new ButtonsPage();
-        buttonsPage
+        storage.
+                getPage(ButtonsPage.class)
                 .open()
                 .clickLink();
     }
 
     @Test
     public void isPossibleClickItemFromDropdown() {
-        ButtonsPage buttonsPage = new ButtonsPage();
-        buttonsPage
+        storage
+                .getPage(ButtonsPage.class)
                 .open()
                 .clickDropdownAndSelectOption("Dropdown link 1");
     }
@@ -37,8 +37,8 @@ public class ButtonsPageTest extends BaseTest {
     @Test
     public void isDropdownContainsAllValues() throws ValidationExceptions.WrongElementStateException {
         List<String> expectedValues = Arrays.asList("Dropdown link 1", "Dropdown link 2");
-        ButtonsPage buttonsPage = new ButtonsPage();
-        buttonsPage
+        storage
+                .getPage(ButtonsPage.class)
                 .open()
                 .isDropdownContainsAllValues(expectedValues);
     }

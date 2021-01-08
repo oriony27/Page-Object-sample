@@ -10,12 +10,13 @@ public class DropdownPageTest extends BaseTest {
 
     @Test
     public void isDropdownWorking() throws ValidationExceptions.WrongPageOpenedException {
-        DropdownPage dropdownPage = new DropdownPage();
-        dropdownPage
+        storage
+                .getPage(DropdownPage.class)
                 .open()
                 .clickAndSelectButtonsFromDropdown();
 
-        ButtonsPage buttonsPage = new ButtonsPage();
-        buttonsPage.isPageOpen();
+        storage
+                .getPage(ButtonsPage.class)
+                .isPageOpen();
     }
 }

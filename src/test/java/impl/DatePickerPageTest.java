@@ -10,8 +10,8 @@ public class DatePickerPageTest extends BaseTest {
     public void isDatePickerSelectDate() {
         String date = "12/10/2001";
 
-        DatepickerPage datepickerPage = new DatepickerPage();
-        datepickerPage
+        storage
+                .getPage(DatepickerPage.class)
                 .open()
                 .selectDateInDatepicker(date);
     }

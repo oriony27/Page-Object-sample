@@ -9,8 +9,8 @@ public class DragAndDropPageTest extends BaseTest {
 
     @Test
     public void isDragAndDropWorking() throws ValidationExceptions.WrongElementStateException {
-        DragAndDropPage dragAndDropPage = new DragAndDropPage();
-        dragAndDropPage
+        storage
+                .getPage(DragAndDropPage.class)
                 .open()
                 .dragAndDropImage();
     }

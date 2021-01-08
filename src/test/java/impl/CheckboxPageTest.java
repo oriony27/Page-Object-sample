@@ -9,8 +9,8 @@ public class CheckboxPageTest extends BaseTest {
 
     @Test
     public void isPossibleToSelectCheckbox() throws ValidationExceptions.WrongElementStateException {
-        CheckboxPage checkboxPage = new CheckboxPage();
-        checkboxPage
+        storage
+                .getPage(CheckboxPage.class)
                 .open()
                 .selectCheckboxAndCheckThatItSelected();
     }

@@ -8,8 +8,8 @@ public class ScrollPageTest extends BaseTest {
 
     @Test
     public void isPossibleToScrollToElement() {
-        PageScrollPage pageScrollPage = new PageScrollPage();
-        pageScrollPage
+        storage
+                .getPage(PageScrollPage.class)
                 .open()
                 .scrollToFullNameInput();
     }

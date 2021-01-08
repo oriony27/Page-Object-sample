@@ -8,8 +8,8 @@ public class KeyAndMousePressPageTest extends BaseTest {
 
     @Test
     public void isPossibleToTypeTextAndClickButton() {
-        KeyAndMousePressPage keyAndMousePressPage = new KeyAndMousePressPage();
-        keyAndMousePressPage
+        storage
+                .getPage(KeyAndMousePressPage.class)
                 .open()
                 .typeTextToInput("Rick Sanchez")
                 .clickButton();

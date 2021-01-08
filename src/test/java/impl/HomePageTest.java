@@ -11,12 +11,13 @@ public class HomePageTest extends BaseTest {
 
     @Test
     public void isPossibleToNavigateByLinks() throws ValidationExceptions.WrongPageOpenedException {
-        MainPage mainPage = new MainPage();
-        mainPage
+        storage
+                .getPage(MainPage.class)
                 .open()
                 .goToPage(Components.BUTTONS_LINK.getLinkName());
 
-        ButtonsPage buttonsPage = new ButtonsPage();
-        buttonsPage.isPageOpen();
+        storage
+                .getPage(ButtonsPage.class)
+                .isPageOpen();
     }
 }

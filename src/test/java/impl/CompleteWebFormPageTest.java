@@ -8,8 +8,8 @@ public class CompleteWebFormPageTest extends BaseTest {
 
     @Test
     public void isPossibleToCompleteWebForm() {
-        CompleteWebFormPage completeWebFormPage = new CompleteWebFormPage();
-        completeWebFormPage
+        storage
+                .getPage(CompleteWebFormPage.class)
                 .open()
                 .fillFirstNameInput("First Name")
                 .fillLastNameInput("Last Name")

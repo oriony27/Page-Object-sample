@@ -10,8 +10,8 @@ public class SwitchWindowPageTest extends BaseTest {
 
     @Test
     public void isPossibleToSwitchWindow() throws ValidationExceptions.WrongElementStateException {
-        SwitchWindowPage switchWindowPage = new SwitchWindowPage();
-        switchWindowPage
+        storage
+                .getPage(SwitchWindowPage.class)
                 .open()
                 .clickOpenNewTabButtonAndSwitchToIt()
                 .checkSwitchedTab(new MainPage().getUrl());
@@ -19,8 +19,8 @@ public class SwitchWindowPageTest extends BaseTest {
 
     @Test
     public void isPossibleToSwitchOnAlert() {
-        SwitchWindowPage switchWindowPage = new SwitchWindowPage();
-        switchWindowPage
+        storage
+                .getPage(SwitchWindowPage.class)
                 .open()
                 .clickAlertButtonAndSwitchToIt();
     }

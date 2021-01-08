@@ -9,16 +9,16 @@ public class EnabledAndDisabledPageTest extends BaseTest {
 
     @Test
     public void isElementDisabled() throws ValidationExceptions.WrongElementStateException {
-        EnabledAndDisabledPage enabledAndDisabledPage = new EnabledAndDisabledPage();
-        enabledAndDisabledPage
+        storage
+                .getPage(EnabledAndDisabledPage.class)
                 .open()
                 .isInputDisabled();
     }
 
     @Test
     public void isElementEnabled() throws ValidationExceptions.WrongElementStateException {
-        EnabledAndDisabledPage enabledAndDisabledPage = new EnabledAndDisabledPage();
-        enabledAndDisabledPage
+        storage
+                .getPage(EnabledAndDisabledPage.class)
                 .open()
                 .isInputEnabled();
     }
