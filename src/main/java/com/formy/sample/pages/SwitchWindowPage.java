@@ -7,7 +7,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class SwitchWindowPage extends HomePage {
+import static com.formy.sample.enumeration.PageUrls.SWITCH_WINDOW_PAGE;
+
+public class SwitchWindowPage extends MainPage {
 
     public SwitchWindowPage() {
         PageFactory.initElements(getWebDriver(), this);
@@ -27,7 +29,7 @@ public class SwitchWindowPage extends HomePage {
 
     @Override
     public String getUrl() {
-        return "https://formy-project.herokuapp.com/switch-window";
+        return SWITCH_WINDOW_PAGE.getPageUrl();
     }
 
     public SwitchWindowPage clickOpenNewTabButtonAndSwitchToIt() {

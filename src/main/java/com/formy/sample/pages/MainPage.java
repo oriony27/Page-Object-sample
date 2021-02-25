@@ -6,7 +6,9 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class MainPage extends BasePage {
+import static com.formy.sample.enumeration.PageUrls.MAIN_PAGE;
+
+public class MainPage extends CommonPage {
 
     public MainPage() {
         PageFactory.initElements(getWebDriver(), this);
@@ -23,7 +25,7 @@ public class MainPage extends BasePage {
 
     @Override
     public String getUrl() {
-        return "https://formy-project.herokuapp.com/";
+        return MAIN_PAGE.getPageUrl();
     }
 
     public MainPage goToPage(String name) {

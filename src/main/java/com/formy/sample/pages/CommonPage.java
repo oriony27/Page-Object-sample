@@ -1,16 +1,17 @@
 package com.formy.sample.pages;
 
 import com.formy.sample.enumeration.Components;
-import org.apache.commons.lang3.NotImplementedException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class HomePage extends BasePage {
+import static com.formy.sample.enumeration.PageUrls.MAIN_PAGE;
 
-    public HomePage() {
+public class CommonPage extends BasePage {
+
+    public CommonPage() {
         PageFactory.initElements(getWebDriver(), this);
     }
 
@@ -27,14 +28,14 @@ public class HomePage extends BasePage {
     private List<WebElement> dropdownMenu;
 
     @Override
-    public HomePage open() {
+    public CommonPage open() {
         super.open();
         return this;
     }
 
     @Override
     public String getUrl() {
-        throw new NotImplementedException();
+        return MAIN_PAGE.getPageUrl();
     }
 
     public void clickLogo() {
@@ -49,6 +50,6 @@ public class HomePage extends BasePage {
         String component = compName.getLinkName();
         components.click();
 
-        dropdownMenu.stream().filter(item -> item.equals(component)).findFirst().ifPresent(WebElement::click);
+        dropdownMenu.stream().filter(item -> item.getText().equals(component)).findFirst().ifPresent(WebElement::click);
     }
 }

@@ -5,7 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class EnabledAndDisabledPage extends HomePage {
+import static com.formy.sample.enumeration.PageUrls.ENABLED_AND_DISABLED_PAGE;
+
+public class EnabledAndDisabledPage extends MainPage {
 
     public EnabledAndDisabledPage() {
         PageFactory.initElements(getWebDriver(), this);
@@ -25,7 +27,7 @@ public class EnabledAndDisabledPage extends HomePage {
 
     @Override
     public String getUrl() {
-        return "https://formy-project.herokuapp.com/enabled";
+        return ENABLED_AND_DISABLED_PAGE.getPageUrl();
     }
 
     public EnabledAndDisabledPage isInputDisabled() throws ValidationExceptions.WrongElementStateException {

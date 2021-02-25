@@ -5,7 +5,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
-public class CompleteWebFormPage extends HomePage {
+import static com.formy.sample.enumeration.PageUrls.COMPLETE_WEB_FORM_PAGE;
+
+public class CompleteWebFormPage extends MainPage {
 
     public CompleteWebFormPage() {
         PageFactory.initElements(getWebDriver(), this);
@@ -43,7 +45,7 @@ public class CompleteWebFormPage extends HomePage {
 
     @Override
     public String getUrl() {
-        return "https://formy-project.herokuapp.com/form";
+        return COMPLETE_WEB_FORM_PAGE.getPageUrl();
     }
 
     public CompleteWebFormPage fillFirstNameInput(String text) {

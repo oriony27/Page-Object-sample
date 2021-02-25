@@ -9,7 +9,9 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ButtonsPage extends HomePage {
+import static com.formy.sample.enumeration.PageUrls.BUTTONS_PAGE;
+
+public class ButtonsPage extends MainPage {
 
     public ButtonsPage() {
         PageFactory.initElements(getWebDriver(), this);
@@ -35,7 +37,7 @@ public class ButtonsPage extends HomePage {
 
     @Override
     public String getUrl() {
-        return "https://formy-project.herokuapp.com/buttons";
+        return BUTTONS_PAGE.getPageUrl();
     }
 
     public ButtonsPage clickPrimaryButton() {

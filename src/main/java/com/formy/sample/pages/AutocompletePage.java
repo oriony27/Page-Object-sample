@@ -6,7 +6,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class AutocompletePage extends HomePage {
+import static com.formy.sample.enumeration.PageUrls.AUTOCOMPLETE_PAGE;
+
+public class AutocompletePage extends MainPage {
 
     public AutocompletePage() {
         PageFactory.initElements(getWebDriver(), this);
@@ -26,7 +28,7 @@ public class AutocompletePage extends HomePage {
 
     @Override
     public String getUrl() {
-        return "https://formy-project.herokuapp.com/autocomplete";
+        return AUTOCOMPLETE_PAGE.getPageUrl();
     }
 
     public AutocompletePage autocomplete(String text) {

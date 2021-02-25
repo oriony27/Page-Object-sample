@@ -6,7 +6,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class DragAndDropPage extends HomePage{
+import static com.formy.sample.enumeration.PageUrls.DRAG_AND_DROP_PAGE;
+
+public class DragAndDropPage extends MainPage{
 
     public DragAndDropPage() {
         PageFactory.initElements(getWebDriver(), this);
@@ -26,7 +28,7 @@ public class DragAndDropPage extends HomePage{
 
     @Override
     public String getUrl() {
-        return "https://formy-project.herokuapp.com/dragdrop";
+        return DRAG_AND_DROP_PAGE.getPageUrl();
     }
 
     public DragAndDropPage dragAndDropImage() throws ValidationExceptions.WrongElementStateException {

@@ -6,7 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class FileUploadPage extends HomePage {
+import static com.formy.sample.enumeration.PageUrls.FILE_UPLOAD_PAGE;
+
+public class FileUploadPage extends MainPage {
 
     public FileUploadPage() {
         PageFactory.initElements(getWebDriver(), this);
@@ -26,7 +28,7 @@ public class FileUploadPage extends HomePage {
 
     @Override
     public String getUrl() {
-        return "https://formy-project.herokuapp.com/fileupload";
+        return FILE_UPLOAD_PAGE.getPageUrl();
     }
 
     public FileUploadPage uploadFile(String pathToFile) {

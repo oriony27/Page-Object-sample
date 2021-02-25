@@ -2,11 +2,13 @@ package impl;
 
 import api.BaseTest;
 import com.formy.sample.pages.CompleteWebFormPage;
-import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 
 public class CompleteWebFormPageTest extends BaseTest {
 
     @Test
+    @DisplayName("Complete web form.")
     public void isPossibleToCompleteWebForm() {
         storage
                 .getPage(CompleteWebFormPage.class)

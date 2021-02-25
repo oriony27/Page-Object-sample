@@ -5,7 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class ModalPage extends HomePage {
+import static com.formy.sample.enumeration.PageUrls.MODAL_PAGE;
+
+public class ModalPage extends MainPage {
 
     public ModalPage() {
         PageFactory.initElements(getWebDriver(), this);
@@ -35,7 +37,7 @@ public class ModalPage extends HomePage {
 
     @Override
     public String getUrl() {
-        return "https://formy-project.herokuapp.com/modal";
+        return MODAL_PAGE.getPageUrl();
     }
 
     public ModalPage openModal() {

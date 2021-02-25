@@ -5,7 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class DatepickerPage extends HomePage {
+import static com.formy.sample.enumeration.PageUrls.DATEPICKER_PAGE;
+
+public class DatepickerPage extends MainPage {
 
     public DatepickerPage() {
         PageFactory.initElements(getWebDriver(), this);
@@ -22,7 +24,7 @@ public class DatepickerPage extends HomePage {
 
     @Override
     public String getUrl() {
-        return "https://formy-project.herokuapp.com/datepicker";
+        return DATEPICKER_PAGE.getPageUrl();
     }
 
     public DatepickerPage selectDateInDatepicker(String date) {

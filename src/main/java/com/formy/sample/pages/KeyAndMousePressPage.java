@@ -4,7 +4,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class KeyAndMousePressPage extends HomePage {
+import static com.formy.sample.enumeration.PageUrls.KEY_AND_MOUSE_PRESS_PAGE;
+
+public class KeyAndMousePressPage extends MainPage {
 
     public KeyAndMousePressPage() {
         PageFactory.initElements(getWebDriver(), this);
@@ -24,7 +26,7 @@ public class KeyAndMousePressPage extends HomePage {
 
     @Override
     public String getUrl() {
-        return "https://formy-project.herokuapp.com/keypress";
+        return KEY_AND_MOUSE_PRESS_PAGE.getPageUrl();
     }
 
     public KeyAndMousePressPage typeTextToInput(String text) {

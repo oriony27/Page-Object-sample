@@ -7,7 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.util.List;
 
-public class DropdownPage extends HomePage {
+import static com.formy.sample.enumeration.PageUrls.DROPDOWN_PAGE;
+
+public class DropdownPage extends MainPage {
 
     public DropdownPage() {
         PageFactory.initElements(getWebDriver(), this);
@@ -27,7 +29,7 @@ public class DropdownPage extends HomePage {
 
     @Override
     public String getUrl() {
-        return "https://formy-project.herokuapp.com/dropdown";
+        return DROPDOWN_PAGE.getPageUrl();
     }
 
     public DropdownPage clickAndSelectButtonsFromDropdown() {

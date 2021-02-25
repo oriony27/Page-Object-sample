@@ -19,7 +19,7 @@ public class PageStorage {
         pages.put(Pages.DROPDOWN, new DropdownPage());
         pages.put(Pages.ENABLED_AND_DISABLED, new EnabledAndDisabledPage());
         pages.put(Pages.FILE_UPLOAD, new FileUploadPage());
-        pages.put(Pages.HOME_PAGE, new HomePage());
+        pages.put(Pages.COMMON_PAGE, new CommonPage());
         pages.put(Pages.KEY_AND_MOUSE_PRESS, new KeyAndMousePressPage());
         pages.put(Pages.MAIN, new MainPage());
         pages.put(Pages.MODAL, new ModalPage());

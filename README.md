@@ -21,21 +21,20 @@ This project is sample of Page Object pattern and work with such components as:
 Technologies that used in project:
 * [Java 8](https://www.java.com/ru/)
 * [Selenium Web Driver](https://www.selenium.dev)
-* [JUnit 4](https://junit.org/junit4/)
+* [JUnit 5](https://junit.org/junit5/)
+* [Allure Framework](https://docs.qameta.io/allure/)
 
 ### How to run
 
-If you have installed gradle :
+If you want to run project:
 
 ```sh
-$ cd formy-sample
-$ gradle test
-```
-
-If you don't have installed gradle:
-
-```sh
-$ cd formy-sample
+$ cd Page-Object-sample.
 $ chmod +x gradlew
-$ ./gradlew test
+$ chmod +x ./scripts/runTests.sh (if you want to run tests without report generation)
+$ chmod +x ./scripts/runTestsWithReport.sh (if you want to run tests with report generation)
+$ sh ./scripts/runTests.sh or sh ./scripts/runTestsWithReport.sh
 ```
+### How to check report
+
+Navigate to .build folder, open reports/allure-report. Then open index.html file in any browser

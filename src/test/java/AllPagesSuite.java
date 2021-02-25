@@ -13,7 +13,7 @@ import org.junit.runners.Suite;
         DropdownPageTest.class,
         EnabledAndDisabledPageTest.class,
         FileUploadPageTest.class,
-        HomePageTest.class,
+        CommonPageTest.class,
         KeyAndMousePressPageTest.class,
         ModalPageTest.class,
         ScrollPageTest.class,

@@ -12,7 +12,7 @@ public enum Pages {
     DROPDOWN(DropdownPage.class),
     ENABLED_AND_DISABLED(EnabledAndDisabledPage.class),
     FILE_UPLOAD(FileUploadPage.class),
-    HOME_PAGE(HomePage.class),
+    COMMON_PAGE(CommonPage.class),
     KEY_AND_MOUSE_PRESS(KeyAndMousePressPage.class),
     MAIN(MainPage.class),
     MODAL(ModalPage.class),

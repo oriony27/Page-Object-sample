@@ -5,7 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class CheckboxPage extends HomePage {
+import static com.formy.sample.enumeration.PageUrls.CHECKBOX_PAGE;
+
+public class CheckboxPage extends MainPage {
 
     public CheckboxPage() {
         PageFactory.initElements(getWebDriver(), this);
@@ -25,7 +27,7 @@ public class CheckboxPage extends HomePage {
 
     @Override
     public String getUrl() {
-        return "https://formy-project.herokuapp.com/checkbox";
+        return CHECKBOX_PAGE.getPageUrl();
     }
 
     public CheckboxPage selectCheckboxAndCheckThatItSelected() throws ValidationExceptions.WrongElementStateException {

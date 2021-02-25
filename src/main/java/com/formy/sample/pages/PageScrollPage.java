@@ -5,7 +5,9 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class PageScrollPage extends HomePage {
+import static com.formy.sample.enumeration.PageUrls.SCROLL_PAGE;
+
+public class PageScrollPage extends MainPage {
 
     public PageScrollPage() {
         PageFactory.initElements(getWebDriver(), this);
@@ -25,7 +27,7 @@ public class PageScrollPage extends HomePage {
 
     @Override
     public String getUrl() {
-        return "https://formy-project.herokuapp.com/switch-window";
+        return SCROLL_PAGE.getPageUrl();
     }
 
     public PageScrollPage scrollToFullNameInput() {
